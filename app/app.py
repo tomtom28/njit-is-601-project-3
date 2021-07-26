@@ -80,5 +80,16 @@ def api_edit(player_id) -> str:
     return resp
 
 
+# Delete an existing Player by Id
+@app.route('/api/v1/player/<int:player_id>', methods=['DELETE'])
+def api_delete(player_id) -> str:
+    cursor = mysql.get_db().cursor()
+    sql_delete_query = """DELETE FROM tblMlbPlayersImport WHERE id = %s """
+    cursor.execute(sql_delete_query, player_id)
+    mysql.get_db().commit()
+    resp = Response(status=200, mimetype='application/json')
+    return resp
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
