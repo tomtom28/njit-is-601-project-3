@@ -26,3 +26,12 @@ API Endpoint of `localhost:5000/api/vi/player` with a `POST` request containing 
 Note that we can query for all players again and see that the new player was added below.
 Also note that the player id is 101 since the database will automatically increment the primary key.
 ![api_get_new_player](screenshots/postman-get-new-player.png)
+
+
+### Update an existing Player
+API Endpoint of `localhost:5000/api/vi/player` with a `PUT` request containing the JSON body playload below.
+![api_put_update_player](screenshots/postman-put-update-player.png)
+
+Note that we can query for the player by id again and see that the existing player indeed updated.
+![api_get_update_player](screenshots/postman-get-update-player.png)
+

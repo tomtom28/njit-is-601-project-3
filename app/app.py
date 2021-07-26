@@ -64,5 +64,21 @@ def api_add() -> str:
     return resp
 
 
+# Update an existing Player by Id
+@app.route('/api/v1/player/<int:player_id>', methods=['PUT'])
+def api_edit(player_id) -> str:
+    cursor = mysql.get_db().cursor()
+    content = request.json
+    input_data = (content['fld_Name'], content['fld_Team'],
+                  content['fld_Position'], content['fld_Age'],
+                  content['fld_Height_inches'], content['fld_Weight_lbs'], player_id)
+    sql_update_query = """UPDATE tblMlbPlayersImport t SET t.fld_Name = %s, t.fld_Team = %s, t.fld_Position = 
+        %s, t.fld_Age = %s, t.fld_Height_inches = %s, t.fld_Weight_lbs = %s WHERE t.id = %s """
+    cursor.execute(sql_update_query, input_data)
+    mysql.get_db().commit()
+    resp = Response(status=200, mimetype='application/json')
+    return resp
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
