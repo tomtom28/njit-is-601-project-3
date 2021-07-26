@@ -27,6 +27,7 @@ def index() -> str:
 
 
 # API Endpoints are below...
+# View all Players
 @app.route('/api/v1/players', methods=['GET'])
 def api_browse() -> str:
     cursor = mysql.get_db().cursor()
@@ -37,6 +38,7 @@ def api_browse() -> str:
     return resp
 
 
+# View a single Player record by Id
 @app.route('/api/v1/player/<int:player_id>', methods=['GET'])
 def api_retrieve(player_id) -> str:
     cursor = mysql.get_db().cursor()
@@ -44,6 +46,21 @@ def api_retrieve(player_id) -> str:
     result = cursor.fetchall()
     json_result = json.dumps(result);
     resp = Response(json_result, status=200, mimetype='application/json')
+    return resp
+
+
+# Add a New Player
+@app.route('/api/v1/player', methods=['POST'])
+def api_add() -> str:
+    content = request.json
+    cursor = mysql.get_db().cursor()
+    input_data = (content['fld_Name'], content['fld_Team'],
+                  content['fld_Position'], content['fld_Age'],
+                  content['fld_Height_inches'], content['fld_Weight_lbs'])
+    sql_insert_query = """INSERT INTO tblMlbPlayersImport (fld_Name,fld_Team,fld_Position,fld_Age,fld_Height_inches,fld_Weight_lbs) VALUES (%s, %s,%s, %s,%s, %s) """
+    cursor.execute(sql_insert_query, input_data)
+    mysql.get_db().commit()
+    resp = Response(status=201, mimetype='application/json')
     return resp
 
 

@@ -16,4 +16,13 @@ API Endpoint of `localhost:5000/api/vi/players` with a `GET` request.
 
 ### View a Single Player By Id
 API Endpoint of `localhost:5000/api/vi/player/:id` with a `GET` request for a given player `:id`.
-![api_all_players](screenshots/postman-get-player.png)
+![api_get_player](screenshots/postman-get-player.png)
+
+
+### Add a New Player
+API Endpoint of `localhost:5000/api/vi/player` with a `POST` request containing the JSON body playload below.
+![api_post_new_player](screenshots/postman-post-new-player.png)
+
+Note that we can query for all players again and see that the new player was added below.
+Also note that the player id is 101 since the database will automatically increment the primary key.
+![api_get_new_player](screenshots/postman-get-new-player.png)
