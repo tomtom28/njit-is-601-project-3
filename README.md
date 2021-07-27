@@ -67,6 +67,6 @@ The new player can then be seen at the bottom of the `index.html` page
 An existing player can be added updated using the `edit.html` page.
 ![jinja_edit](screenshots/jinja-edit.png)
 
-The new player can then be seen at the bottom of the `index.html` page
+The edited player can then be viewed by their `id` using the `view.html` page
 ![jinja_view_edited_player](screenshots/jinja-view-edit-player.png)
 
