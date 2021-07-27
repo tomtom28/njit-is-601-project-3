@@ -61,5 +61,12 @@ A new player can be added using the `new.html` page.
 ![jinja_new](screenshots/jinja-new-player.png)
 
 The new player can then be seen at the bottom of the `index.html` page
-![jinja_index](screenshots/jinja-index-new-player.png)
+![jinja_index_new_player](screenshots/jinja-index-new-player.png)
+
+### Edit Existing Player Page
+An existing player can be added updated using the `edit.html` page.
+![jinja_edit](screenshots/jinja-edit.png)
+
+The new player can then be seen at the bottom of the `index.html` page
+![jinja_view_edited_player](screenshots/jinja-view-edit-player.png)
 

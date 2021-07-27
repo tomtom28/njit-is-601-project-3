@@ -120,5 +120,28 @@ def form_insert_post():
     return redirect("/", code=302)
 
 
+# Edit Player by Id Page
+@app.route('/edit/<int:player_id>', methods=['GET'])
+def form_edit_get(player_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute('SELECT * FROM tblMlbPlayersImport WHERE id=%s', player_id)
+    result = cursor.fetchall()
+    return render_template('edit.html', title='Edit Form', player=result[0])
+
+
+# Edit Player by Id Form
+@app.route('/edit/<int:player_id>', methods=['POST'])
+def form_update_post(player_id):
+    cursor = mysql.get_db().cursor()
+    input_data = (request.form.get('fldPlayerName'), request.form.get('fldTeamName'),
+                  request.form.get('fldPosition'), request.form.get('fldAge'),
+                  request.form.get('fldHeight'), request.form.get('fldWeight'), player_id)
+    sql_update_query = """UPDATE tblMlbPlayersImport t SET t.fld_Name = %s, t.fld_Team = %s, t.fld_Position = 
+    %s, t.fld_Age = %s, t.fld_Height_inches = %s, t.fld_Weight_lbs = %s WHERE t.id = %s """
+    cursor.execute(sql_update_query, input_data)
+    mysql.get_db().commit()
+    return redirect("/", code=302)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
