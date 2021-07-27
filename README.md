@@ -51,3 +51,8 @@ This is the same as was done in [Homework 5](https://github.com/tomtom28/njit-is
 ### Homepage (View All Players)
 The homepage will be rendered using `index.html` and it will show all the MLB Players in the database.
 ![jinja_index](screenshots/jinja-index.png)
+
+### View Page (View Player by Id)
+A view of one player by their database id will be rendered using `view.html`.
+![jinja_view](screenshots/jinja-view.png)
+
