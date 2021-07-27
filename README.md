@@ -56,3 +56,10 @@ The homepage will be rendered using `index.html` and it will show all the MLB Pl
 A view of one player by their database id will be rendered using `view.html`.
 ![jinja_view](screenshots/jinja-view.png)
 
+### Add New Player Page
+A new player can be added using the `new.html` page.
+![jinja_new](screenshots/jinja-new-player.png)
+
+The new player can then be seen at the bottom of the `index.html` page
+![jinja_index](screenshots/jinja-index-new-player.png)
+

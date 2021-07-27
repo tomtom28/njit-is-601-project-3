@@ -98,7 +98,26 @@ def record_view(player_id):
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblMlbPlayersImport WHERE id=%s', player_id)
     result = cursor.fetchall()
-    return render_template('view.html', title='View Form', player=result[0])
+    return render_template('view.html', title='View Player', player=result[0])
+
+
+# Add New Player by Id Page
+@app.route('/players/new', methods=['GET'])
+def form_insert_get():
+    return render_template('new.html', title='New Player Form')
+
+
+# Add New Player by Id Form
+@app.route('/players/new', methods=['POST'])
+def form_insert_post():
+    cursor = mysql.get_db().cursor()
+    input_data = (request.form.get('fldPlayerName'), request.form.get('fldTeamName'),
+                  request.form.get('fldPosition'), request.form.get('fldAge'),
+                  request.form.get('fldHeight'), request.form.get('fldWeight'))
+    sql_insert_query = """INSERT INTO tblMlbPlayersImport (fld_Name,fld_Team,fld_Position,fld_Age,fld_Height_inches,fld_Weight_lbs) VALUES (%s, %s,%s, %s,%s, %s) """
+    cursor.execute(sql_insert_query, input_data)
+    mysql.get_db().commit()
+    return redirect("/", code=302)
 
 
 if __name__ == '__main__':
