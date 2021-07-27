@@ -20,7 +20,7 @@ API Endpoint of `localhost:5000/api/v1/player/:id` with a `GET` request for a gi
 
 
 ### Add a New Player
-API Endpoint of `localhost:5000/api/v1/player` with a `POST` request containing the JSON body playload below.
+API Endpoint of `localhost:5000/api/v1/player` with a `POST` request containing the JSON body payload below.
 ![api_post_new_player](screenshots/postman-post-new-player.png)
 
 Note that we can query for all players again and see that the new player was added below.
@@ -29,7 +29,7 @@ Also note that the player id is 101 since the database will automatically increm
 
 
 ### Update an existing Player
-API Endpoint of `localhost:5000/api/v1/player` with a `PUT` request containing the JSON body playload below.
+API Endpoint of `localhost:5000/api/v1/player` with a `PUT` request containing the JSON body payload below.
 ![api_put_update_player](screenshots/postman-put-update-player.png)
 
 Note that we can query for the player by id again and see that the existing player indeed updated.
