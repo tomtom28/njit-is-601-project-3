@@ -16,16 +16,6 @@ app.config['MYSQL_DATABASE_DB'] = 'mlbPlayersData'
 mysql.init_app(app)
 
 
-@app.route('/', methods=['GET'])
-def index() -> str:
-    cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblMlbPlayersImport')
-    result = cursor.fetchall()
-    js = json.dumps(result)
-    resp = Response(js, status=200, mimetype='application/json')
-    return resp
-
-
 # API Endpoints are below...
 # View all Players
 @app.route('/api/v1/players', methods=['GET'])
@@ -89,6 +79,17 @@ def api_delete(player_id) -> str:
     mysql.get_db().commit()
     resp = Response(status=200, mimetype='application/json')
     return resp
+
+
+# Jinga Template Views are below...
+# Home Page - View all Players
+@app.route('/', methods=['GET'])
+def index():
+    user = {'username': 'MLB Players Project'}
+    cursor = mysql.get_db().cursor()
+    cursor.execute('SELECT * FROM tblMlbPlayersImport')
+    result = cursor.fetchall()
+    return render_template('index.html', title='Home', user=user, players=result)
 
 
 if __name__ == '__main__':

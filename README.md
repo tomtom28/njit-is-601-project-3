@@ -42,3 +42,12 @@ API Endpoint of `localhost:5000/api/v1/player/:id` with a `DELETE` using the pla
 
 Note that we can query for the player by id again and see that the player no longer exists.
 ![api_get_deleted_player](screenshots/postman-delete-get-no-player.png)
+
+
+## View Jinja Templates
+The project also includes Jinja templates to view the MLB Player data in an HTML format. 
+This is the same as was done in [Homework 5](https://github.com/tomtom28/njit-is-601-hw5).
+
+### Homepage (View All Players)
+The homepage will be rendered using `index.html` and it will show all the MLB Players in the database.
+![jinja_index](screenshots/jinja-index.png)
