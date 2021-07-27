@@ -70,3 +70,9 @@ An existing player can be added updated using the `edit.html` page.
 The edited player can then be viewed by their `id` using the `view.html` page
 ![jinja_view_edited_player](screenshots/jinja-view-edit-player.png)
 
+
+### Delete Existing Player
+Using the delete button on the edit player page (`view.html` from above), we can remove the player record by `id`.
+
+The player record will then no longer appear on the `index.html` page
+![jinja_index_delete_player](screenshots/jinja-delete-player.png)
